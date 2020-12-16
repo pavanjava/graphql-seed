@@ -1,0 +1,9 @@
+#directories to be ignored
+node_modules
+build
+.idea
+dist
+#Files to be ignored
+npm-debug.log
+.env
+.DS_Store

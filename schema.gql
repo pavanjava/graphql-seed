@@ -2,6 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Zip {
+  _id: ID!
+  city: String
+  loc: [String!]
+  pop: Int
+  state: String
+}
+
 type Query {
-  greet: String!
+  findAll: [Zip!]!
+}
+
+type Mutation {
+  createZip(data: ZipsDto!): Zip!
+}
+
+input ZipsDto {
+  city: String
+  loc: [String!]
+  pop: Int
+  state: String
 }

@@ -5,7 +5,11 @@ import {MongooseModule} from "@nestjs/mongoose";
 
 @Module({
     imports: [
-        GraphQLModule.forRoot({autoSchemaFile: 'schema.gql'}),
+        GraphQLModule.forRoot({
+            debug: true,
+            playground: true,
+            autoSchemaFile: 'schema.gql'
+        }),
         MongooseModule.forRoot('mongodb://localhost:27017/test'),
         ZipsModule
     ],

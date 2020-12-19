@@ -11,11 +11,13 @@ type Zip {
 }
 
 type Query {
-  findAll: [Zip!]!
+  findAll: [Zip!]
+  findById(id: String!): Zip
 }
 
 type Mutation {
   createZip(data: ZipsDto!): Zip!
+  updateZip(data: ZipsDto!, id: String!): Boolean!
 }
 
 input ZipsDto {

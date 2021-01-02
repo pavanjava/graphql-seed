@@ -1,4 +1,4 @@
-import {Args, Int, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {ZipsService} from "./zips.service";
 import {Zip, ZipsDocument} from "./schemas/zips.schema";
 import {ZipsDto} from "./dto/zips.dto";
@@ -9,17 +9,17 @@ export class ZipsResolver {
     constructor(private readonly zipService: ZipsService) {
     }
 
-    @Query(() => [Zip], {nullable:true})
-    async findAll(): Promise<ZipsDocument[]>{
+    @Query(() => [Zip], {nullable: true, name: 'zips'})
+    async findAll(): Promise<ZipsDocument[]> {
         return this.zipService.findAll();
     }
 
-    @Mutation(() => Zip)
+    @Mutation(() => Zip, {name:'zip'})
     async createZip(@Args('data') data: ZipsDto): Promise<ZipsDocument> {
         return this.zipService.createZip(data);
     }
 
-    @Query(() => Zip, {nullable: true})
+    @Query(() => Zip, {nullable: true, name:'zip'})
     async findById(@Args('id') id: string): Promise<ZipsDocument> {
         return this.zipService.findOne(id);
     }
